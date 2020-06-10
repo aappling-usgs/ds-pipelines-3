@@ -25,24 +25,36 @@ targets:
       - MN_data
       - MI_data
       - IL_data
+      - IN_data
+      - IA_data
 
   # --- WI --- #
   
   WI_data:
-    command: get_site_data(oldest_active_sites, I('WI'), parameter)
+    command: get_site_data('1_fetch/tmp/inventory_WI.tsv', parameter)
 
   # --- MN --- #
   
   MN_data:
-    command: get_site_data(oldest_active_sites, I('MN'), parameter)
+    command: get_site_data('1_fetch/tmp/inventory_MN.tsv', parameter)
 
   # --- MI --- #
   
   MI_data:
-    command: get_site_data(oldest_active_sites, I('MI'), parameter)
+    command: get_site_data('1_fetch/tmp/inventory_MI.tsv', parameter)
 
   # --- IL --- #
   
   IL_data:
-    command: get_site_data(oldest_active_sites, I('IL'), parameter)
+    command: get_site_data('1_fetch/tmp/inventory_IL.tsv', parameter)
+
+  # --- IN --- #
+  
+  IN_data:
+    command: get_site_data('1_fetch/tmp/inventory_IN.tsv', parameter)
+
+  # --- IA --- #
+  
+  IA_data:
+    command: get_site_data('1_fetch/tmp/inventory_IA.tsv', parameter)
 
