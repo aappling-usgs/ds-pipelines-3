@@ -1,7 +1,7 @@
 # download data for each site
 # packages needed: tidyverse, dataRetrieval
-get_site_data <- function(sites_info, state, parameter) {
-  site_info <- filter(sites_info, state_cd == state)
+get_site_data <- function(state_info_file, parameter) {
+  site_info <- readr::read_tsv(state_info_file, col_types='cccddcDDi')
   message(sprintf('  Retrieving data for %s-%s', site_info$state_cd, site_info$site_no))
 
   # simulate an unreliable web service or internet connection by causing random failures
