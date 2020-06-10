@@ -7,18 +7,24 @@ packages:
   - rnaturalearth
   - cowplot
   - scipiper
+  - leaflet
+  - leafpop
+  - htmlwidgets
 
 sources:
   - 123_state_tasks.R
   - 1_fetch/src/find_oldest_sites.R
   - 1_fetch/src/get_site_data.R
   - 3_visualize/src/map_sites.R
+  - 3_visualize/src/plot_data_coverage.R
+  - 3_visualize/src/map_timeseries.R
 
 targets:
   main:
     depends:
       - 3_visualize/out/site_map.png
-      - state_tasks
+      - 3_visualize/out/data_coverage.png
+      - 3_visualize/out/timeseries_map.html
 
   # Configuration
   states:
@@ -30,15 +36,24 @@ targets:
   oldest_active_sites:
     command: find_oldest_sites(states, parameter)
 
-  # TODO: PULL SITE DATA HERE
-  state_tasks:
+  # PULL SITE DATA HERE
+  state_combiners:
     command: do_state_tasks(
       oldest_active_sites,
       '1_fetch/src/get_site_data.R',
       '2_process/src/tally_site_obs.R',
-      '3_visualize/src/plot_site_data.R')
+      '3_visualize/src/plot_site_data.R',
+      '123_state_tasks.R')
     depends: parameter
+  obs_tallies:
+    command: pluck(state_combiners, target_name)
+  timeseries_plots_info:
+    command: pluck(state_combiners, target_name)
 
-  # Map oldest sites
+  # Visualize
   3_visualize/out/site_map.png:
     command: map_sites(oldest_active_sites, target_name)
+  3_visualize/out/data_coverage.png:
+    command: plot_data_coverage(obs_tallies, target_name, parameter)
+  3_visualize/out/timeseries_map.html:
+    command: map_timeseries(out_file=target_name, site_info=oldest_active_sites, plot_info=timeseries_plots_info)
