@@ -53,8 +53,8 @@ do_state_tasks <- function(oldest_active_sites, ...) {
     finalize_funs = c('combine_obs_tallies', 'summarize_timeseries_plots'))
 
   # Build the tasks
-  obs_tallies <- scmake('obs_tallies_promise', remake_file='123_state_tasks.yml')
-  scmake('timeseries_plots.yml_promise', remake_file='123_state_tasks.yml')
+  loop_tasks(task_plan, '123_state_tasks.yml', num_tries=40, n_cores=1)
+  obs_tallies <- remake::fetch('obs_tallies_promise', remake_file='123_state_tasks.yml')
   timeseries_plots_info <- yaml::yaml.load_file('3_visualize/out/timeseries_plots.yml') %>%
     tibble::enframe(name = 'filename', value = 'hash') %>%
     mutate(hash = purrr::map_chr(hash, `[[`, 1))

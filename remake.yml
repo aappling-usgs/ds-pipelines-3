@@ -10,6 +10,7 @@ packages:
   - leaflet
   - leafpop
   - htmlwidgets
+  - remake
 
 sources:
   - 123_state_tasks.R
@@ -28,7 +29,11 @@ targets:
 
   # Configuration
   states:
-    command: c(I(c('WI','MN','MI','IL','IN','IA')))
+    command: c(I(c(
+      'AL','AZ','AR','CA','CO','CT','DE','DC','FL','GA','ID','IL','IN','IA',
+      'KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH',
+      'NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX',
+      'UT','VT','VA','WA','WV','WI','WY','AK','HI','GU','PR')))
   parameter:
     command: c(I('00060'))
 
