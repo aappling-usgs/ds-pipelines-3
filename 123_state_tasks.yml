@@ -501,17 +501,6 @@ targets:
   UT_tally:
     command: tally_site_obs(site_data=UT_data)
 
-  # --- VT --- #
-  
-  VT_data:
-    command: get_site_data('1_fetch/tmp/inventory_VT.tsv', parameter)
-
-  3_visualize/out/timeseries_VT.png:
-    command: plot_site_data(out_file=target_name, site_data=VT_data, parameter=parameter)
-
-  VT_tally:
-    command: tally_site_obs(site_data=VT_data)
-
   # --- VA --- #
   
   VA_data:
@@ -588,17 +577,6 @@ targets:
 
   HI_tally:
     command: tally_site_obs(site_data=HI_data)
-
-  # --- GU --- #
-  
-  GU_data:
-    command: get_site_data('1_fetch/tmp/inventory_GU.tsv', parameter)
-
-  3_visualize/out/timeseries_GU.png:
-    command: plot_site_data(out_file=target_name, site_data=GU_data, parameter=parameter)
-
-  GU_tally:
-    command: tally_site_obs(site_data=GU_data)
 
   # --- PR --- #
   
@@ -701,8 +679,6 @@ targets:
       '3_visualize/out/timeseries_TX.png',
       `UT_tally`,
       '3_visualize/out/timeseries_UT.png',
-      `VT_tally`,
-      '3_visualize/out/timeseries_VT.png',
       `VA_tally`,
       '3_visualize/out/timeseries_VA.png',
       `WA_tally`,
@@ -717,8 +693,6 @@ targets:
       '3_visualize/out/timeseries_AK.png',
       `HI_tally`,
       '3_visualize/out/timeseries_HI.png',
-      `GU_tally`,
-      '3_visualize/out/timeseries_GU.png',
       `PR_tally`,
       '3_visualize/out/timeseries_PR.png')
     
@@ -810,8 +784,6 @@ targets:
       '3_visualize/out/timeseries_TX.png',
       `UT_tally`,
       '3_visualize/out/timeseries_UT.png',
-      `VT_tally`,
-      '3_visualize/out/timeseries_VT.png',
       `VA_tally`,
       '3_visualize/out/timeseries_VA.png',
       `WA_tally`,
@@ -826,8 +798,6 @@ targets:
       '3_visualize/out/timeseries_AK.png',
       `HI_tally`,
       '3_visualize/out/timeseries_HI.png',
-      `GU_tally`,
-      '3_visualize/out/timeseries_GU.png',
       `PR_tally`,
       '3_visualize/out/timeseries_PR.png')
     
