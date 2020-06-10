@@ -1,4 +1,5 @@
 # download data for each site
+# packages needed: tidyverse, dataRetrieval
 get_site_data <- function(sites_info, state, parameter) {
   site_info <- filter(sites_info, state_cd == state)
   message(sprintf('  Retrieving data for %s-%s', site_info$state_cd, site_info$site_no))
