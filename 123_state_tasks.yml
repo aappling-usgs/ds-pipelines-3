@@ -1,0 +1,48 @@
+# Do not edit - automatically generated
+# from the task_makefile.mustache template
+# by create_task_makefile() via do_state_tasks()
+# using scipiper package version 0.0.20
+
+target_default: 123_state_tasks
+
+include:
+  - remake.yml
+
+packages:
+  - tidyverse
+  - dataRetrieval
+
+sources:
+  - 1_fetch/src/get_site_data.R
+
+file_extensions:
+  - "ind"
+
+targets:
+  123_state_tasks:
+    depends:
+      - WI_data
+      - MN_data
+      - MI_data
+      - IL_data
+
+  # --- WI --- #
+  
+  WI_data:
+    command: get_site_data(oldest_active_sites, I('WI'), parameter)
+
+  # --- MN --- #
+  
+  MN_data:
+    command: get_site_data(oldest_active_sites, I('MN'), parameter)
+
+  # --- MI --- #
+  
+  MI_data:
+    command: get_site_data(oldest_active_sites, I('MI'), parameter)
+
+  # --- IL --- #
+  
+  IL_data:
+    command: get_site_data(oldest_active_sites, I('IL'), parameter)
+
